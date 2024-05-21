@@ -7,130 +7,141 @@ const Menu = () => {
     const navbarRef = useRef(null);
 
     useEffect(() => {
-        const showMenu = () => {
-            navbarRef.current.classList.toggle('show-menu');
+        const mostrarMenu = () => {
+            navbarRef.current.classList.toggle('mostrar-menu');
             headerToggleRef.current.classList.toggle('bx-x');
         };
 
-        headerToggleRef.current.addEventListener('click', showMenu);
+        headerToggleRef.current.addEventListener('click', mostrarMenu);
 
-        const linkColor = navbarRef.current.querySelectorAll('.nav__link');
+        const enlacesColor = navbarRef.current.querySelectorAll('.nav__enlace');
 
-        function colorLink() {
-            linkColor.forEach(l => l.classList.remove('active'));
-            this.classList.add('active');
+        function colorEnlace() {
+            enlacesColor.forEach(l => l.classList.remove('activo'));
+            this.classList.add('activo');
         }
 
-        linkColor.forEach(l => l.addEventListener('click', colorLink));
+        enlacesColor.forEach(l => l.addEventListener('click', colorEnlace));
 
         // Cleanup function to remove event listeners when component unmounts
         return () => {
-            headerToggleRef.current.removeEventListener('click', showMenu);
-            linkColor.forEach(l => l.removeEventListener('click', colorLink));
+            headerToggleRef.current.removeEventListener('click', mostrarMenu);
+            enlacesColor.forEach(l => l.removeEventListener('click', colorEnlace));
         };
     }, []);
 
     return (
-        <div className="body">
-            {/* HEADER */}
-            <header className="header">
-                <div className="header__container">
-                <img src={miImagen} alt="Descripción de la imagen" className="header__img" />
+        <div className="cuerpo">
+            {/* CABECERA */}
+            <header className="cabecera">
+                <div className="contenedor-cabecera">
+                    <img src={miImagen} alt="Descripción de la imagen" className="cabecera__img" />
+                    
 
-                    <a href="#" className="header__logo">Bedimcode</a>
+                    <a href="#" className="cabecera__logo">Inova8M</a>
 
-                    <div className="header__search">
-                        <input type="search" placeholder="Search" className="header__input" />
-                        <i className='bx bx-search header__icon'></i>
-                    </div>
-
-                    <div className="header__toggle" ref={headerToggleRef}>
+                    <div className="cabecera__toggle" ref={headerToggleRef}>
                         <i className='bx bx-menu'></i>
                     </div>
                 </div>
             </header>
 
-            {/* NAV */}
-            <div className="nav" id="navbar" ref={navbarRef}>
-                <nav className="nav__container">
+            {/* NAVEGACION */}
+            <div className="navegacion" id="navbar" ref={navbarRef}>
+                <nav className="contenedor-nav">
                     <div>
-                        <a href="#" className="nav__link nav__logo">
-                            <i className='bx bxs-disc nav__icon'></i>
-                            <span className="nav__logo-name">Bedimcode</span>
+                        <a href="#" className="nav__enlace nav__logo">
+                            <i className='bx bxs-disc nav__icono'></i>
+                            <span className="nav__logo-nombre">Inova8M</span>
                         </a>
 
-                        <div className="nav__list">
-                            <div className="nav__items">
-                                <h3 className="nav__subtitle">Profile</h3>
+                        <div className="lista-nav">
+                            <div className="items-nav">
+                                <h3 className="nav__subtitulo">Perfil</h3>
 
-                                <a href="#" className="nav__link active">
-                                    <i className='bx bx-home nav__icon'></i>
-                                    <span className="nav__name">Home</span>
+                                <a href="#" className="nav__enlace activo">
+                                    <i className='bx bx-home nav__icono'></i>
+                                    <span className="nav__nombre">Inicio</span>
                                 </a>
 
-                                <div className="nav__dropdown">
-                                    <a href="#" className="nav__link">
-                                        <i className='bx bx-user nav__icon'></i>
-                                        <span className="nav__name">Profile</span>
-                                        <i className='bx bx-chevron-down nav__icon nav__dropdown-icon'></i>
+                                <div className="nav__desplegable">
+                                    <a href="#" className="nav__enlace">
+                                        <i className='bx bx-user nav__icono'></i>
+                                        <span className="nav__nombre">Perfil</span>
+                                        <i className='bx bx-chevron-down nav__icono nav__desplegable-icono'></i>
                                     </a>
 
-                                    <div className="nav__dropdown-collapse">
-                                        <div className="nav__dropdown-content">
-                                            <a href="#" className="nav__dropdown-item">Passwords</a>
-                                            <a href="#" className="nav__dropdown-item">Mail</a>
-                                            <a href="#" className="nav__dropdown-item">Accounts</a>
+                                    <div className="nav__desplegable-colapso">
+                                        <div className="nav__desplegable-contenido">
+                                            <a href="#" className="nav__desplegable-item">Contraseñas</a>
+                                            <a href="#" className="nav__desplegable-item">Correo</a>
+                                            <a href="#" className="nav__desplegable-item">Cuentas</a>
                                         </div>
                                     </div>
                                 </div>
 
-                                <a href="#" className="nav__link">
-                                    <i className='bx bx-message-rounded nav__icon'></i>
-                                    <span className="nav__name">Messages</span>
+                                <div className="nav__desplegable">
+                                    <a href="#" className="nav__enlace">
+                                        <i className='bx bx-user nav__icono'></i>
+                                        <span className="nav__nombre">Perfil</span>
+                                        <i className='bx bx-chevron-down nav__icono nav__desplegable-icono'></i>
+                                    </a>
+
+                                    <div className="nav__desplegable-colapso">
+                                        <div className="nav__desplegable-contenido">
+                                            <a href="#" className="nav__desplegable-item">Contraseñas</a>
+                                            <a href="#" className="nav__desplegable-item">Correo</a>
+                                            <a href="#" className="nav__desplegable-item">Cuentas</a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <a href="#" className="nav__enlace">
+                                    <i className='bx bx-message-rounded nav__icono'></i>
+                                    <span className="nav__nombre">Mensajes</span>
                                 </a>
                             </div>
 
-                            <div className="nav__items">
-                                <h3 className="nav__subtitle">Menu</h3>
+                            <div className="items-nav">
+                                <h3 className="nav__subtitulo">Menú</h3>
 
-                                <div className="nav__dropdown">
-                                    <a href="#" className="nav__link">
-                                        <i className='bx bx-bell nav__icon'></i>
-                                        <span className="nav__name">Notifications</span>
-                                        <i className='bx bx-chevron-down nav__icon nav__dropdown-icon'></i>
+                                <div className="nav__desplegable">
+                                    <a href="#" className="nav__enlace">
+                                        <i className='bx bx-bell nav__icono'></i>
+                                        <span className="nav__nombre">Notificaciones</span>
+                                        <i className='bx bx-chevron-down nav__icono nav__desplegable-icono'></i>
                                     </a>
 
-                                    <div className="nav__dropdown-collapse">
-                                        <div className="nav__dropdown-content">
-                                            <a href="#" className="nav__dropdown-item">Blocked</a>
-                                            <a href="#" className="nav__dropdown-item">Silenced</a>
-                                            <a href="#" className="nav__dropdown-item">Publish</a>
-                                            <a href="#" className="nav__dropdown-item">Program</a>
+                                    <div className="nav__desplegable-colapso">
+                                        <div className="nav__desplegable-contenido">
+                                            <a href="#" className="nav__desplegable-item">Bloqueados</a>
+                                            <a href="#" className="nav__desplegable-item">Silenciados</a>
+                                            <a href="#" className="nav__desplegable-item">Publicar</a>
+                                            <a href="#" className="nav__desplegable-item">Programar</a>
                                         </div>
                                     </div>
-
                                 </div>
 
-                                <a href="#" className="nav__link">
-                                    <i className='bx bx-compass nav__icon'></i>
-                                    <span className="nav__name">Explore</span>
+                                <a href="#" className="nav__enlace">
+                                    <i className='bx bx-compass nav__icono'></i>
+                                    <span className="nav__nombre">Explorar</span>
                                 </a>
-                                <a href="#" className="nav__link">
-                                    <i className='bx bx-bookmark nav__icon'></i>
-                                    <span className="nav__name">Saved</span>
+                                <a href="#" className="nav__enlace">
+                                    <i className='bx bx-bookmark nav__icono'></i>
+                                    <span className="nav__nombre">Guardado</span>
                                 </a>
                             </div>
                         </div>
                     </div>
 
-                    <a href="#" className="nav__link nav__logout">
-                        <i className='bx bx-log-out nav__icon'></i>
-                        <span className="nav__name">Log Out</span>
+                    <a href="#" className="nav__enlace nav__cerrar-sesion">
+                        <i className='bx bx-log-out nav__icono'></i>
+                        <span className="nav__nombre">Cerrar Sesión</span>
                     </a>
                 </nav>
             </div>
 
-            {/* CONTENTS */}
+            {/* CONTENIDOS */}
             <main>
                 <section>
                     <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Incidunt vel illum fuga unde cum, voluptates magni molestias eveniet culpa autem ut, totam veniam, suscipit tempore ullam pariatur est at asperiores?</p>
